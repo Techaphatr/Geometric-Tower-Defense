@@ -10,5 +10,18 @@
 1. pygame
 2. random
 
+**Install via git bash**:
+```bash
+git clone https://github.com/Techaphatr/Geometric-Tower-Defense.git
+```
+
 ## On-Process
 - current process: Map generate & Game title/background/asset images.
+what are left?
+- wave, troops, and monster sprite
+- bg images.
+what have I done?
+- Menu
+- ui asset
+- level generate
+- difficulty select

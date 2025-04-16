@@ -34,7 +34,7 @@ class run:
         empty_grid = "--"
         grid = [[empty_grid for _ in range(width)] for _ in range(height)]
 
-        entrance_y = random.randint(2, height - 2)
+        entrance_y = random.randint(2, height - 3)
         grid[entrance_y][0] = 2
         path_x, path_y = 1, entrance_y
         cd = 1
@@ -52,10 +52,18 @@ class run:
                     grid[path_y][path_x] = "ul"
                     grid[path_y - 1][path_x] = "ur"
                     path_y -= 1
+                    if not bool(random.randint(0,2)):
+                        grid[path_y][path_x] = "ud"
+                        grid[path_y - 1][path_x] = "ur"
+                        path_y -= 1
                 elif move == "down" and path_y < height - 2:
                     grid[path_y][path_x] = "dl"
                     grid[path_y + 1][path_x] = "dr"
                     path_y += 1
+                    if not bool(random.randint(0,2)):
+                        grid[path_y][path_x] = "ud"
+                        grid[path_y + 1][path_x] = "dr"
+                        path_y += 1
                 cd = 1
         grid[path_y][path_x] = 3
 
@@ -103,16 +111,21 @@ class run:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONUP:
                     if self.__play_button_rect.collidepoint(event.pos) and self.__game_states == "Menu":
+                        Sound().click.play()
                         self.__game_states = "Gamemode"
                     elif self.__quit_button_rect.collidepoint(event.pos) and self.__game_states == "Menu":
+                        Sound().click.play()
                         running = False
                     elif self.__easy_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
+                        Sound().dfficulty_select.play()
                         self.__difficulty = "Easy"
                         self.__game_states = "Game"
                     elif self.__hard_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
+                        Sound().dfficulty_select.play()
                         self.__difficulty = "Hard"
                         self.__game_states = "Game"
                     elif self.__extreme_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
+                        Sound().dfficulty_select.play()
                         self.__difficulty = "Extreme"
                         self.__game_states = "Game"
                 elif event.type == pygame.KEYDOWN:
