@@ -14,6 +14,10 @@ class run:
         self.__data_class = database()
         self.__game_states = "Menu"
         self.__difficulty = None
+        self.__running = True
+        self.__sound = Sound()
+        self.__sound.menu_theme.play(-1)
+        self.__sound.menu_theme.set_volume(0.5)
         self.screen = pygame.display.set_mode(self.__data_class.config['Screen_Size'])
         pygame.display.set_caption("Geometric Tower Defense [GTD]")
         pygame.display.set_icon(pygame.image.load("Picture/game_logo.png"))
@@ -82,6 +86,13 @@ class run:
         self.screen.blit(self.__hard, self.__hard_rect)
         self.screen.blit(self.__extreme, self.__extreme_rect)
 
+    def __draw_grid(self):
+        """
+        draw main part of the game.
+        Grid size: x: 50, y: 50
+        """
+        pass
+
     def __load_game(self):
         pass
 
@@ -103,38 +114,41 @@ class run:
         elif self.__game_states == "Over":
             pass
 
+    def __mouse_interact(self, event):
+        if self.__play_button_rect.collidepoint(event.pos) and self.__game_states == "Menu":
+            self.__sound.click.play()
+            self.__sound.menu_theme.stop()
+            self.__game_states = "Gamemode"
+        elif self.__quit_button_rect.collidepoint(event.pos) and self.__game_states == "Menu":
+            self.__sound.click.play()
+            self.__running = False
+        elif self.__easy_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
+            self.__sound.dfficulty_select.play()
+            self.__difficulty = "Easy"
+            self.__game_states = "Game"
+        elif self.__hard_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
+            self.__sound.dfficulty_select.play()
+            self.__difficulty = "Hard"
+            self.__game_states = "Game"
+        elif self.__extreme_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
+            self.__sound.dfficulty_select.play()
+            self.__difficulty = "Extreme"
+            self.__game_states = "Game"
+
     def run(self):
-        running = True
-        while running:
+        self.__running = True
+        while self.__running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    running = False
+                    self.__running = False
                 elif event.type == pygame.MOUSEBUTTONUP:
-                    if self.__play_button_rect.collidepoint(event.pos) and self.__game_states == "Menu":
-                        Sound().click.play()
-                        self.__game_states = "Gamemode"
-                    elif self.__quit_button_rect.collidepoint(event.pos) and self.__game_states == "Menu":
-                        Sound().click.play()
-                        running = False
-                    elif self.__easy_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
-                        Sound().dfficulty_select.play()
-                        self.__difficulty = "Easy"
-                        self.__game_states = "Game"
-                    elif self.__hard_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
-                        Sound().dfficulty_select.play()
-                        self.__difficulty = "Hard"
-                        self.__game_states = "Game"
-                    elif self.__extreme_rect.collidepoint(event.pos) and self.__game_states == "Gamemode":
-                        Sound().dfficulty_select.play()
-                        self.__difficulty = "Extreme"
-                        self.__game_states = "Game"
+                    self.__mouse_interact(event)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_r:
                         print(f"Reload map: \n{numpy.array(self.__create_grid())}")
 
             self.screen.fill((255,255,255))
             self.__load()
-
 
             pygame.display.update()
         pygame.quit()

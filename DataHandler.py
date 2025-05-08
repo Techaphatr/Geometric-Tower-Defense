@@ -42,3 +42,6 @@ class database(super):
         with open(self.__data_path, mode="w", newline="", encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerows(rows)
+    
+    def save(self, title, value):
+        pass
