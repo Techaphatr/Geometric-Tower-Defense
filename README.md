@@ -22,7 +22,7 @@ git clone https://github.com/Techaphatr/Geometric-Tower-Defense.git
 
 ## Acknowledge
 1. <a href='https://mixkit.co/' target='_blank'>mixkit.co</a>
-2. <a href='https://suno.com/' target='_blank'>Music AI Generate</a>
+2. <a href='https://suno.com/' target='_blank'>SUNO AI Generate</a>
 
 ## On-Process
 - current process: Map generate & Game title/background/asset images.
