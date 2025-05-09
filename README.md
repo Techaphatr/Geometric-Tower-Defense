@@ -8,7 +8,10 @@
 ## How to install?
 **Require library**:
 1. pygame
-2. random
+2. numpy
+3. tkinter
+4. matplotlib
+5. random
 
 **Install Library**:
 ```bash
