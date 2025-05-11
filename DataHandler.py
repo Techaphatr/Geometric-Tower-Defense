@@ -31,16 +31,16 @@ class database(super):
             headers = next(reader)
             rows.append(headers)
             col_index = headers.index(title)
+            put = False
             for row in reader:
+                if (row[col_index] == None or row[col_index] == '') and not put:
+                    row[col_index] = value
+                    put = True
                 rows.append(row)
-
-        if len(rows) == 1:
-            new_row = [""] * len(headers)
-            new_row[col_index] = value
-            rows.append(new_row)
-        else:
-            rows.append([""] * len(headers))
-            rows[-1][col_index] = value
+            if not put:
+                row = ['' for _ in range(5)]
+                row[col_index] = value
+                rows.append(row)
 
         with open(self.__static_path, mode="w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)

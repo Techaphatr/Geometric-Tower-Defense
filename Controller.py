@@ -188,6 +188,15 @@ class run:
                 self.__coin -= 10
                 self.__data_class.save("type", self.__current_select.type)
             status, troop2 = EntityHandler.check_merge(nearest_grid.center[0], nearest_grid.center[1])
+            if database.distance(self.__entrance.center, nearest_grid.center) < 60:
+                self.__data_class.save("position", "near entrance")
+            elif database.distance(self.__exit.center, nearest_grid.center) < 60:
+                self.__data_class.save("position", "near exit")
+            else:
+                for grid in self.__map_path:
+                    if database.distance(grid.center, nearest_grid.center) < 60:
+                        self.__data_class.save("position", "near path")
+                        break
             if status:
                 if troop2.current_stage == self.__current_select.current_stage and \
                     troop2.type == self.__current_select.type:
@@ -457,6 +466,7 @@ class run:
         while self.__running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    self.__reset()
                     self.__running = False
                 elif event.type == pygame.MOUSEBUTTONUP:
                     self.__mouse_interact(event)

@@ -5,6 +5,8 @@
 ## How to run this game.
 > Run `run.py` script in IDE or Use command `python run.py` in terminal.
 
+<hr>
+
 ## How to install?
 **Require library**:
 1. pygame
@@ -35,8 +37,10 @@ what are left?
 - wave, troops, and monster sprite
 
 <hr>
+
 ## MIT License
-> Copyright (c) 2025 Techaphatr Indhavivadhana
+
+>Copyright (c) 2025 Techaphatr Indhavivadhana
 <br>
 <br>
 Permission is hereby granted, free of charge, to any person obtaining a copy
