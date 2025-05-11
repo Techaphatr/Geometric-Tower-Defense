@@ -8,14 +8,16 @@
 ## How to install?
 **Require library**:
 1. pygame
-2. numpy
-3. tkinter
-4. matplotlib
-5. random
+2. tkinter
+3. matplotlib
+4. random
+5. time
+6. math
+7. csv
 
 **Install Library**:
 ```bash
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 
 **Install via git bash**:
@@ -26,14 +28,33 @@ git clone https://github.com/Techaphatr/Geometric-Tower-Defense.git
 ## Acknowledge
 1. <a href='https://mixkit.co/' target='_blank'>mixkit.co</a>
 2. <a href='https://suno.com/' target='_blank'>SUNO AI Generate</a>
+3. <a href='https://www.flaticon.com/' target='_blank'>flaticon</a>
 
 ## On-Process
-- current process: Map generate & Game title/background/asset images.
 what are left?
 - wave, troops, and monster sprite
-- bg images.
-what have I done?
-- Menu
-- ui asset
-- level generate
-- difficulty select
+
+<hr>
+## MIT License
+> Copyright (c) 2025 Techaphatr Indhavivadhana
+<br>
+<br>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+<br>
+<br>
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+<br>
+<br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
